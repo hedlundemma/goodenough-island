@@ -1,12 +1,13 @@
 WHY NOT A GIF HERE? TO SET THE MODE.
 
-# Island name
+# Albero
 
-Some text about your lovely island
+This is an island filled with all the trees you could imagine. People? No. Trees? Yes.
+At island Albero (italian for tree), you can hang in trees, hug trees, talk with trees, eat some pie beside a tree. You get the picture.
 
-# Hotel name
+# Treehotel
 
-Why not add some info about the hotel of your dreams?
+In this hotel our guests gets to explore the tree-tops, from their room. We provide the finest (and some not that fine) treehouses in the world, high up in the trees.
 
 # Instructions
 
