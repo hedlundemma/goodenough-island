@@ -6,9 +6,9 @@ require __DIR__ . '/hotelFunctions.php';
 
 $db = connect('/hotel.db');
 
-// $statement = $db->query('SELECT * FROM reservations');
+$statement = $db->query('SELECT * FROM reservations');
 
-// $reservations = $statement->fetchAll(PDO::FETCH_ASSOC);
+$reservations = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST['fName'], $_POST['lName'], $_POST['transferCode'], $_POST['dateArraving'], $_POST['dateLeaving'], $_POST['rooms'])) {

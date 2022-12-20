@@ -60,10 +60,10 @@ require __DIR__ . '/connection-db.php';
                     </select> <br><br>
 
                     <form method="POST" action="/index.php">
-                        <label for="f_name">First name:</label>
-                        <input type="text" id="f_name" name="f_name" class="form-input">
-                        <label for="l_name">Last name:</label>
-                        <input type="text" id="l_name" name="l_name" class="form-input">
+                        <label for="fName">First name:</label>
+                        <input type="text" id="fName" name="fName" class="form-input">
+                        <label for="lName">Last name:</label>
+                        <input type="text" id="lName" name="lName" class="form-input">
                         <label for="transferCode"> Transfer Code:</label>
                         <input type="text" id="transferCode" name="transferCode">
                         <label for="dateArraving">Date of arrival:</label>
@@ -80,6 +80,7 @@ require __DIR__ . '/connection-db.php';
     <footer>
     </footer>
 </body>
+
 
 
 
