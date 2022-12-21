@@ -3,6 +3,8 @@
 require __DIR__ . '/calender.php';
 require __DIR__ . '/connection-db.php';
 
+use GuzzleHttp\Client;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +36,8 @@ require __DIR__ . '/connection-db.php';
                     no room to lie down but we have made sure there is a nice and comfy pillow for you to sit on!
 
                     How do I get up you there you might think? You just climb. </p>
+                <?php echo $calendar->draw(date('2023-01-01')); ?>
+
 
             </section>
             <section class="room-two">
@@ -51,15 +55,17 @@ require __DIR__ . '/connection-db.php';
                     probably need. </p>
             </section>
             <section class="calander">
-                <h3>Select what room you want:</h2>
-                    <select name="rooms" id="rooms" class="form-input">
-                        <option value="1">Cheapskate</option>
-                        <option value="2">Budget-queen</option>
-                        <option value="3">Luxury</option>
-                        <?php echo $calendar->draw(date('2023-01-01')) ?>
-                    </select> <br><br>
 
-                    <form method="POST" action="/index.php">
+
+
+                <form method="POST" action="/index.php">
+                    <h3>Select what room you want:</h2>
+                        <select name="rooms" id="rooms" class="form-input">
+                            <option value="1">Cheapskate</option>
+                            <option value="2">Budget-queen</option>
+                            <option value="3">Luxury</option>
+
+                        </select> <br><br>
                         <label for="fName">First name:</label>
                         <input type="text" id="fName" name="fName" class="form-input">
                         <label for="lName">Last name:</label>
@@ -74,12 +80,21 @@ require __DIR__ . '/connection-db.php';
                             min="2023-01-01">
                         <input type="submit" value="submit">
 
-                    </form>
+
+
+                </form>
             </section>
     </main>
     <footer>
     </footer>
 </body>
+
+
+
+
+
+
+
 
 
 
