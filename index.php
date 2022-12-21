@@ -14,13 +14,23 @@ use GuzzleHttp\Client;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="icon" href="/images/tree.png">
     <title>Albero</title>
 </head>
 
 <body>
     <header>
+        <section class="header-text">
+            <h1> Tree Hotel</h1>
+            <p> Alberos finest place to stay</p>
+        </section>
         <nav>
+
+            <a href="#">Hem</a>
+            <a href="#"> Kontakt</a>
+            <a href="#"> Erbjudanden </a>
+
 
 
         </nav>
@@ -36,10 +46,11 @@ use GuzzleHttp\Client;
                     no room to lie down but we have made sure there is a nice and comfy pillow for you to sit on!
 
                     How do I get up you there you might think? You just climb. </p>
-                <?php echo $calendar->draw(date('2023-01-01')); ?>
+
 
 
             </section>
+            <?php echo $calendar->draw(date('2023-01-01')); ?>
             <section class="room-two">
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
@@ -57,7 +68,7 @@ use GuzzleHttp\Client;
             <section class="calander">
 
 
-
+                <!--
                 <form method="POST" action="/index.php">
                     <h3>Select what room you want:</h2>
                         <select name="rooms" id="rooms" class="form-input">
@@ -83,11 +94,16 @@ use GuzzleHttp\Client;
 
 
                 </form>
-            </section>
+            </section> -->
     </main>
     <footer>
     </footer>
 </body>
+
+
+
+
+
 
 
 
