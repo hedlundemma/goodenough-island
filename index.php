@@ -2,8 +2,9 @@
 
 require __DIR__ . '/calender.php';
 require __DIR__ . '/connection-db.php';
+require __DIR__ . '/payment.php';
 
-use GuzzleHttp\Client;
+
 
 ?>
 <!DOCTYPE html>
@@ -26,15 +27,10 @@ use GuzzleHttp\Client;
             <p> Alberos finest place to stay</p>
         </section>
         <nav>
-
             <a href="#">Hem</a>
             <a href="#"> Kontakt</a>
             <a href="#"> Erbjudanden </a>
-
-
-
         </nav>
-
     </header>
     <main>
         <section class="room-section">
@@ -46,18 +42,13 @@ use GuzzleHttp\Client;
                     no room to lie down but we have made sure there is a nice and comfy pillow for you to sit on!
 
                     How do I get up you there you might think? You just climb. </p>
-
-
-
             </section>
             <?php echo $calendar->draw(date('2023-01-01')); ?>
             <section class="room-two">
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
                 <p>Wanna get some comfort and a nice bed to sleep in? Our budget room is for you!</p>
-
             </section>
-
 
             <section class="room-three">
                 <h2>Luxury</h2>
@@ -99,56 +90,5 @@ use GuzzleHttp\Client;
     <footer>
     </footer>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>

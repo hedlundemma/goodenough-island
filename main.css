@@ -16,3 +16,9 @@ body {
   margin-top: 2rem;
   flex-direction: column;
 }
+
+/* The carousel for pictures*/
+.img-slide img {
+  width: 100%;
+  height: auto;
+}
