@@ -1,8 +1,9 @@
 <?php
 
-require __DIR__ . '/calender.php';
+
 require __DIR__ . '/connection-db.php';
 require __DIR__ . '/payment.php';
+require __DIR__ . '/calender.php';
 
 
 
@@ -27,7 +28,7 @@ require __DIR__ . '/payment.php';
             <p> Alberos finest place to stay</p>
         </section>
         <nav>
-            <a href="#">Hem</a>
+            <a href="/index.php">Hem</a>
             <a href="#"> Kontakt</a>
             <a href="#"> Erbjudanden </a>
         </nav>
@@ -42,8 +43,11 @@ require __DIR__ . '/payment.php';
                     no room to lie down but we have made sure there is a nice and comfy pillow for you to sit on!
 
                     How do I get up you there you might think? You just climb. </p>
+
+
+
             </section>
-            <?php echo $calendar->draw(date('2023-01-01')); ?>
+
             <section class="room-two">
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
@@ -56,39 +60,44 @@ require __DIR__ . '/payment.php';
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
             </section>
-            <section class="calander">
+            <form method="POST" action="/form.php">
+                <h3>Select what room you want:</h2>
+                    <select name="rooms" id="rooms" class="form-input">
+                        <option value="1">Cheapskate</option>
+                        <option value="2">Budget-queen</option>
+                        <option value="3">Luxury</option>
+                        <section class="calander">
+                            <?php echo $calendar->draw(date('2023-01-01')); ?>
 
-
-                <!--
-                <form method="POST" action="/index.php">
-                    <h3>Select what room you want:</h2>
-                        <select name="rooms" id="rooms" class="form-input">
-                            <option value="1">Cheapskate</option>
-                            <option value="2">Budget-queen</option>
-                            <option value="3">Luxury</option>
-
-                        </select> <br><br>
-                        <label for="fName">First name:</label>
-                        <input type="text" id="fName" name="fName" class="form-input">
-                        <label for="lName">Last name:</label>
-                        <input type="text" id="lName" name="lName" class="form-input">
-                        <label for="transferCode"> Transfer Code:</label>
-                        <input type="text" id="transferCode" name="transferCode">
-                        <label for="dateArraving">Date of arrival:</label>
-                        <input type="date" id="dateArraving" name="dateArraving" class="form-input" max="2023-01-31"
-                            min="2023-01-01">
-                        <label for="dateLeaving">Date of departure:</label>
-                        <input type="date" id="dateLeaving" name="dateLeaving" class="form-input" max="2023-01-31"
-                            min="2023-01-01">
-                        <input type="submit" value="submit">
+                    </select> <br><br>
+                    <label for="fName">First name:</label>
+                    <input type="text" id="fName" name="fName" class="form-input">
+                    <label for="lName">Last name:</label>
+                    <input type="text" id="lName" name="lName" class="form-input">
+                    <label for="transferCode"> Transfer Code:</label>
+                    <input type="text" id="transferCode" name="transferCode">
+                    <label for="dateArraving">Date of arrival:</label>
+                    <input type="date" id="dateArraving" name="dateArraving" class="form-input" max="2023-01-31"
+                        min="2023-01-01">
+                    <label for="dateLeaving">Date of departure:</label>
+                    <input type="date" id="dateLeaving" name="dateLeaving" class="form-input" max="2023-01-31"
+                        min="2023-01-01">
+                    <input type="submit" value="submit">
 
 
 
-                </form>
-            </section> -->
+            </form>
+        </section>
+
     </main>
     <footer>
     </footer>
+
 </body>
+
+
+
+
+
 
 </html>

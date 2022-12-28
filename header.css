@@ -1,14 +1,14 @@
 header {
   padding: 20px;
   background-image: url(/images/green.jpeg);
-  height: 18rem;
+  height: 15rem;
 }
 
 .header-text {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
+  margin-left: 3rem;
 }
 
 .header-text p {
@@ -23,15 +23,19 @@ h1 {
 
 nav {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 3rem;
-  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav a {
   text-decoration: none;
   color: black;
-  font-size: 35px;
+  font-size: 25px;
+  gap: 3rem;
+  margin-top: -8%;
+}
+
+nav a:hover {
+  color: white;
 }

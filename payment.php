@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+
+require __DIR__ . '/vendor/autoload.php';
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\RequestException;
-
-
 
 $client = new Client([
     'base_uri' => 'https://www.yrgopelago.se/centralbank'
@@ -14,14 +14,33 @@ $client = new Client([
 
 $response = $client->request(
     'POST',
-    'https://www.yrgopelago.se/centralbank/transferCode',
+    'https://www.yrgopelago.se/centralbank',
     [
         'form_params' => [
-            'transferCode' => 'ab14cbb2-f550-46e6-97c2-bb7f0126733e'
+            'transferCode' => '34fae872-9d3e-4fa1-aef9-f98b400239be',
+            'totalcost' => 20
         ]
     ]
 );
 
+
+
 if ($response->hasHeader('Content-Length')) {
-    $transfer_code = json_decode($response->getBody()->getContents());
+    $transfer_code = json_encode($response->getBody()->getContents());
+    var_dump($transfer_code);
 }
+
+
+
+
+
+// $ch = curl_init();
+
+// curl_setopt($ch, CURLOPT_URL, 'https://www.yrgopelago.se/centralbank/transferCode');
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// $data = curl_exec($ch);
+
+// curl_close($ch);
+
+// var_dump($data);
