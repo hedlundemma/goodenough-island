@@ -60,7 +60,7 @@ require __DIR__ . '/calender.php';
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
             </section>
-            <form method="POST" action="/form.php">
+            <form method="POST" action="/index.php">
                 <h3>Select what room you want:</h2>
                     <select name="rooms" id="rooms" class="form-input">
                         <option value="1">Cheapskate</option>
@@ -87,6 +87,8 @@ require __DIR__ . '/calender.php';
 
 
             </form>
+
+            <?php echo available(); ?>
         </section>
 
     </main>
@@ -94,6 +96,8 @@ require __DIR__ . '/calender.php';
     </footer>
 
 </body>
+
+
 
 
 

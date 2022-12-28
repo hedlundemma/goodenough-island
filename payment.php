@@ -8,16 +8,15 @@ require __DIR__ . '/vendor/autoload.php';
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
-$client = new Client([
-    'base_uri' => 'https://www.yrgopelago.se/centralbank'
-]);
+$client = new Client();
+
 
 $response = $client->request(
     'POST',
-    'https://www.yrgopelago.se/centralbank',
+    'https://www.yrgopelago.se/centralbank/transferCode',
     [
         'form_params' => [
-            'transferCode' => '34fae872-9d3e-4fa1-aef9-f98b400239be',
+            'transferCode' => '11090a06-6b29-4609-96fc-4ee2f14a8048',
             'totalcost' => 20
         ]
     ]
@@ -27,7 +26,6 @@ $response = $client->request(
 
 if ($response->hasHeader('Content-Length')) {
     $transfer_code = json_encode($response->getBody()->getContents());
-    var_dump($transfer_code);
 }
 
 
