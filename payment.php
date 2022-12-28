@@ -10,35 +10,25 @@ use GuzzleHttp\Exception\ClientException;
 
 $client = new Client();
 
+$transferCode = trim(htmlspecialchars($_POST['transferCode'], ENT_QUOTES));
 
 $response = $client->request(
     'POST',
     'https://www.yrgopelago.se/centralbank/transferCode',
     [
         'form_params' => [
-            'transferCode' => '11090a06-6b29-4609-96fc-4ee2f14a8048',
-            'totalcost' => 20
+            'transferCode' => $transferCode,
+            'totalcost' => 1
         ]
     ]
+
+
 );
 
 
 
+
+
 if ($response->hasHeader('Content-Length')) {
-    $transfer_code = json_encode($response->getBody()->getContents());
+    $transfer_code = json_decode($response->getBody()->getContents());
 }
-
-
-
-
-
-// $ch = curl_init();
-
-// curl_setopt($ch, CURLOPT_URL, 'https://www.yrgopelago.se/centralbank/transferCode');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// $data = curl_exec($ch);
-
-// curl_close($ch);
-
-// var_dump($data);
