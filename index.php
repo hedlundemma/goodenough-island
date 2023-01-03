@@ -2,7 +2,7 @@
 
 
 require __DIR__ . '/connection-db.php';
-require __DIR__ . '/payment.php';
+
 require __DIR__ . '/calender.php';
 
 
