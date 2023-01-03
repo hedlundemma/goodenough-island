@@ -3,16 +3,12 @@
 declare(strict_types=1);
 
 require __DIR__ . '/hotelFunctions.php';
-
-
+require __DIR__ . 'functions.php';
 
 
 function available()
 {
-
     $database = connect('/hotel.db');
-
-
 
     if (isset($_POST['fName'], $_POST['lName'], $_POST['transferCode'], $_POST['dateArraving'], $_POST['dateLeaving'], $_POST['rooms'])) {
 
