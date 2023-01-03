@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use benhall14\phpCalendar\Calendar as Calendar;
@@ -137,16 +136,59 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
 
 }
 
-function showOccupiedDate(string $dateArraving, string $dateLeaving){
-    $events[] = array(
-        'start' =>  $dateArraving,
-        'end' => $dateLeaving,
-        'summary' => 'Booked',
-        'mask' => true
-        );
 
 
-      $calendar = new Calendar();
+function addReservations() {
 
-        $calendar->addEvents($events)->display(date('Y-m-d'), 'green');
+    $database = connect('/hotel.db');
+    $statement = $database->prepare('SELECT date_arraving, date_leaving, room_id FROM reservations
+    WHERE
+    room_id = :room_id');
+
+
+$statement->bindParam(':date_arraving', $dateArraving, PDO::PARAM_STR);
+$statement->bindParam(':date_leaving', $dateLeaving, PDO::PARAM_STR);
+$statement->bindParam(':room_id', $rooms, PDO::PARAM_INT);
+
+$statement->execute();
+
+$events = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$calander = new Calander();
+
+foreach ($events as $event){
+    $arraving = new DateTime($event['date_arraving']);
+    $leaving = new DateTime($event['date_leaving']);
+    $calander->addEvent($arraving, $leaving);
 }
+
+
+    //  $events[] = array(
+    //     'start' =>  $dateArraving,
+    //     'end' => $dateLeaving,
+    //     'summary' => 'Booked',
+    //     'mask' => true
+    //     );
+    echo $calander->createCalander();
+
+    }
+
+
+
+
+
+//     if (is_array($events)) {
+//         foreach ($events as $event) {
+//             if (isset($event['start']) && isset($event['end'])) {
+//                 $classes = isset($event['classes']) ? $event['classes'] : false;
+//                 $mask = isset($event['mask']) ? (bool) $event['mask'] : false;
+//                 $summary = isset($event['summary']) ? $event['summary'] : false;
+//                addEvent($event['start'], $event['end'], $summary, $mask, $classes);
+//             }
+//         }
+//         // $calendar->addEvents($events)->display(date('Y-m-d'), 'green');
+//     }
+
+
+// }
+// };

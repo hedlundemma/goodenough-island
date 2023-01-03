@@ -44,7 +44,7 @@ require __DIR__ . '/calender.php';
 
                     How do I get up you there you might think? You just climb. </p>
 
-                <?php showOccupiedDate()?>
+                <?php addReservations()?>
 
 
 
@@ -54,7 +54,7 @@ require __DIR__ . '/calender.php';
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
                 <p>Wanna get some comfort and a nice bed to sleep in? Our budget room is for you!</p>
-                <?php showOccupiedDate()?>
+                <?php addReservations()?>
             </section>
 
             <section class="room-three">
@@ -62,7 +62,7 @@ require __DIR__ . '/calender.php';
                 <img src="/images/treehouselux1.jpeg">
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
-                <?php showOccupiedDate()?>
+                <?php addReservations()?>
             </section>
             <form method="POST" action="/index.php">
                 <h3>Select what room you want:</h2>
