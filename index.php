@@ -2,8 +2,8 @@
 
 
 require __DIR__ . '/connection-db.php';
-
 require __DIR__ . '/calender.php';
+
 
 
 
@@ -44,6 +44,8 @@ require __DIR__ . '/calender.php';
 
                     How do I get up you there you might think? You just climb. </p>
 
+                <?php showOccupiedDate()?>
+
 
 
             </section>
@@ -52,6 +54,7 @@ require __DIR__ . '/calender.php';
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
                 <p>Wanna get some comfort and a nice bed to sleep in? Our budget room is for you!</p>
+                <?php showOccupiedDate()?>
             </section>
 
             <section class="room-three">
@@ -59,6 +62,7 @@ require __DIR__ . '/calender.php';
                 <img src="/images/treehouselux1.jpeg">
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
+                <?php showOccupiedDate()?>
             </section>
             <form method="POST" action="/index.php">
                 <h3>Select what room you want:</h2>
@@ -67,7 +71,7 @@ require __DIR__ . '/calender.php';
                         <option value="2">Budget-queen</option>
                         <option value="3">Luxury</option>
                         <section class="calander">
-                            <?php echo $calendar->draw(date('2023-01-01')); ?>
+
 
                     </select> <br><br>
                     <label for="fName">First name:</label>

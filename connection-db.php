@@ -47,7 +47,7 @@ function available()
                 if ($transferCodeCorrect) {
                     insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLeaving, $rooms, $totalCost);
 
-                    echo "Thank you, it was succesful";
+                    getReservationConfirmation($fname, $lname, $dateArraving, $dateLeaving, $totalCost);
                 } else {
                     echo "Not enough money";
                 }

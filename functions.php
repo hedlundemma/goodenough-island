@@ -5,8 +5,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
 
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use benhall14\phpCalendar\Calendar as Calendar;
 
 // check transfercode
 function transferCode(string $transferCode, int $totalCost)
@@ -107,3 +109,44 @@ function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLea
 
     $statement->execute();
 };
+
+function getReservationConfirmation(string $fname, string $lname, string $dateArraving, string $dateLeaving, int $totalCost)
+{
+    $receipt = [
+        'island' => "Albero",
+        'hotel' => "Tree-hotel",
+        'f_name' => $fname,
+        'l_name' =>$lname,
+        'arrival_date' => $dateArraving,
+        'departure_date' => $dateLeaving,
+        'total_cost' => $totalCost,
+        'stars' => "1"
+
+    ];
+    // echo "Thank You for your reservation at our " . $receipt['stars'] . "-Star " . $receipt['hotel'] . ", $fname!" . "<br>" . "Your arrival date is " . "$dateArraving " . "<br>" . "and your departure date is " . "$dateLeaving." . "<br>" . "The total fee for your stay is " . $receipt['total_cost'] . "." . "<br>" . "We are looking forward seeing You!";
+
+
+    $getData = file_get_contents(__DIR__ . '/recepit.json');
+    $tempArray = json_decode($getData, true);
+    array_push($tempArray, $receipt);
+    $json = json_encode($tempArray);
+    file_put_contents(__DIR__ . '/recepit.json', $json);
+
+
+
+
+}
+
+function showOccupiedDate(string $dateArraving, string $dateLeaving){
+    $events[] = array(
+        'start' =>  $dateArraving,
+        'end' => $dateLeaving,
+        'summary' => 'Booked',
+        'mask' => true
+        );
+
+
+      $calendar = new Calendar();
+
+        $calendar->addEvents($events)->display(date('Y-m-d'), 'green');
+}
