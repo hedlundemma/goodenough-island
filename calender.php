@@ -6,19 +6,28 @@ require __DIR__ . '/vendor/autoload.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
 
-$rooms = [
-    'room' => 1,
-    'room' => 2,
-    'room' => 3
-]
+
 
 $calendar1 = new Calendar();
 $calendar2 = new Calendar();
 $calendar3 = new Calendar();
-$calendar1->stylesheet();
-$calendar1->useMondayStartingDate();
 
-function bookedDays($calendar1)
+
+$calendarArray = [
+    ['room' => 1, 'calendar' => $calendar1],
+    ['room' => 2, 'calendar' => $calendar2],
+    ['room' => 3, 'calendar' => $calendar3]
+];
+
+foreach ($calendarArray as $key => $calendar) {
+    $calendar = $calendar['calendar'];
+
+$calendar->stylesheet();
+$calendar->useMondayStartingDate();
+
+}
+
+function bookedDays( array $calendarArray)
 {
 
     $database = connect('/hotel.db');
@@ -30,11 +39,14 @@ function bookedDays($calendar1)
     if (!empty($reservations)) {
         $mask = true;
     }
+    foreach ($calendarArray as $calendar){
     foreach ($reservations as $event) {
-        if ($event['room_id'] === 1) {
-            $calendar1->addEvent($event['date_arraving'], $event['date_leaving'], false, $mask,  $event['cost']);
+
+        if ($event['room_id'] === $calendar['room']) {
+        $calendar['calendar']->addEvent($event['date_arraving'], $event['date_leaving'], false, $mask,  $event['cost']);
         }
     }
 }
+};
 
-bookedDays($calendar1);
+bookedDays($calendarArray);
