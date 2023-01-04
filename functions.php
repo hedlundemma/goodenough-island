@@ -38,6 +38,36 @@ function transferCode(string $transferCode, int $totalCost)
     }
 };
 
+// make sure that the deposit gets into my account
+function checkDeposit(string $transferCode)
+{
+    $client = new Client();
+
+    $response = $client->request(
+        'POST',
+        'https://www.yrgopelago.se/centralbank/deposit',
+        [
+            'form_params' => [
+                'transferCode' => $transferCode,
+                'user' => 'Emma'
+            ]
+        ]
+
+
+    );
+    if ($response->hasHeader('Content-Length')) {
+        $deposit= json_decode($response->getBody()->getContents());
+    }
+
+    if (isset($deposit->error)) {
+
+        return false;
+    } else {
+        return true;
+    }
+};
+
+//function to make sure that the dates are free for booking
 function checkFreeDate(string $dateArraving, string $dateLeaving, int $rooms)
 {
     //get data from db
@@ -68,6 +98,7 @@ function checkFreeDate(string $dateArraving, string $dateLeaving, int $rooms)
     }
 }
 
+// function to calculate the total cost for the tourist stay
 function totalCost(int $rooms, string $dateArraving, string $dateLeaving)
 {
 
@@ -86,7 +117,7 @@ function totalCost(int $rooms, string $dateArraving, string $dateLeaving)
 }
 
 
-
+// function to insert the tourist info to the database
 function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLeaving, $rooms, $totalCost)
 {
 
@@ -109,6 +140,7 @@ function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLea
     $statement->execute();
 };
 
+// function to get the reservation confirmation as a json
 function getReservationConfirmation(string $fname, string $lname, string $dateArraving, string $dateLeaving, int $totalCost)
 {
     $receipt = [
@@ -137,27 +169,3 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
 
 
 }
-
-
-
-
-
-
-
-
-
-//     if (is_array($events)) {
-//         foreach ($events as $event) {
-//             if (isset($event['start']) && isset($event['end'])) {
-//                 $classes = isset($event['classes']) ? $event['classes'] : false;
-//                 $mask = isset($event['mask']) ? (bool) $event['mask'] : false;
-//                 $summary = isset($event['summary']) ? $event['summary'] : false;
-//                addEvent($event['start'], $event['end'], $summary, $mask, $classes);
-//             }
-//         }
-//         // $calendar->addEvents($events)->display(date('Y-m-d'), 'green');
-//     }
-
-
-// }
-// };
