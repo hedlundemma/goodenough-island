@@ -45,7 +45,7 @@ require __DIR__ . '/calender.php';
 
                     How do I get up you there you might think? You just climb. </p>
 
-                <?php echo $calendar1->draw(date('Y-m-d')); ?>
+                <?php echo $cheapskateCalendar->draw(date('Y-m-d')); ?>
 
 
 
@@ -55,7 +55,7 @@ require __DIR__ . '/calender.php';
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
                 <p>Wanna get some comfort and a nice bed to sleep in? Our budget room is for you!</p>
-                <?php echo $calendar2->draw(date('Y-m-d')); ?>
+                <?php echo $budgetCalendar->draw(date('Y-m-d')); ?>
             </section>
 
             <section class="room-three">
@@ -63,7 +63,7 @@ require __DIR__ . '/calender.php';
                 <img src="/images/treehouselux1.jpeg">
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
-                <?php echo $calendar3->draw(date('Y-m-d')); ?>
+                <?php echo $luxuryCalendar->draw(date('Y-m-d')); ?>
             </section>
             <form method="POST" action="/index.php">
                 <h3>Select what room you want:</h2>

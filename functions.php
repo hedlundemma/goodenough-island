@@ -48,8 +48,9 @@ function checkDeposit(string $transferCode)
         'https://www.yrgopelago.se/centralbank/deposit',
         [
             'form_params' => [
-                'transferCode' => $transferCode,
-                'user' => 'Emma'
+                'user' => 'Dan',
+                'transferCode' => $transferCode
+
             ]
         ]
 
@@ -65,6 +66,8 @@ function checkDeposit(string $transferCode)
     } else {
         return true;
     }
+
+
 };
 
 //function to make sure that the dates are free for booking
@@ -157,13 +160,14 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
 
 
 
-    $getData = file_get_contents(__DIR__ . '/recepit.json');
-    $tempArray = json_decode($getData, true);
-    array_push($tempArray, $receipt);
-    $json = json_encode($tempArray);
+    $getJson = file_get_contents(__DIR__ . '/recepit.json');
+    $temporaryArray = json_decode($getJson, true);
+    array_push($temporaryArray, $receipt);
+    $json = json_encode($temporaryArray);
     file_put_contents(__DIR__ . '/recepit.json', $json);
 
-    echo json_encode(end($tempArray));
+    //get the last recepit
+    echo json_encode(end($temporaryArray));
 
 
 

@@ -8,15 +8,15 @@ use benhall14\phpCalendar\Calendar as Calendar;
 
 
 
-$calendar1 = new Calendar();
-$calendar2 = new Calendar();
-$calendar3 = new Calendar();
+$cheapskateCalendar = new Calendar();
+$budgetCalendar = new Calendar();
+$luxuryCalendar = new Calendar();
 
 
 $calendarArray = [
-    ['room' => 1, 'calendar' => $calendar1],
-    ['room' => 2, 'calendar' => $calendar2],
-    ['room' => 3, 'calendar' => $calendar3]
+    ['room' => 1, 'calendar' => $cheapskateCalendar],
+    ['room' => 2, 'calendar' => $budgetCalendar],
+    ['room' => 3, 'calendar' => $luxuryCalendar]
 ];
 
 foreach ($calendarArray as $key => $calendar) {
@@ -40,6 +40,7 @@ function bookedDays( array $calendarArray)
         $mask = true;
     }
     foreach ($calendarArray as $calendar){
+
     foreach ($reservations as $event) {
 
         if ($event['room_id'] === $calendar['room']) {
