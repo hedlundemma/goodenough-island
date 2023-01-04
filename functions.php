@@ -7,7 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use benhall14\phpCalendar\Calendar as Calendar;
+
 
 // check transfercode
 function transferCode(string $transferCode, int $totalCost)
@@ -122,7 +122,7 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
         'stars' => "1"
 
     ];
-    // echo "Thank You for your reservation at our " . $receipt['stars'] . "-Star " . $receipt['hotel'] . ", $fname!" . "<br>" . "Your arrival date is " . "$dateArraving " . "<br>" . "and your departure date is " . "$dateLeaving." . "<br>" . "The total fee for your stay is " . $receipt['total_cost'] . "." . "<br>" . "We are looking forward seeing You!";
+
 
 
     $getData = file_get_contents(__DIR__ . '/recepit.json');
@@ -131,6 +131,8 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
     $json = json_encode($tempArray);
     file_put_contents(__DIR__ . '/recepit.json', $json);
 
+    echo json_encode(end($tempArray));
+
 
 
 
@@ -138,40 +140,7 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
 
 
 
-function addReservations() {
 
-    $database = connect('/hotel.db');
-    $statement = $database->prepare('SELECT date_arraving, date_leaving, room_id FROM reservations
-    WHERE
-    room_id = :room_id');
-
-
-$statement->bindParam(':date_arraving', $dateArraving, PDO::PARAM_STR);
-$statement->bindParam(':date_leaving', $dateLeaving, PDO::PARAM_STR);
-$statement->bindParam(':room_id', $rooms, PDO::PARAM_INT);
-
-$statement->execute();
-
-$events = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-$calander = new Calander();
-
-foreach ($events as $event){
-    $arraving = new DateTime($event['date_arraving']);
-    $leaving = new DateTime($event['date_leaving']);
-    $calander->addEvent($arraving, $leaving);
-}
-
-
-    //  $events[] = array(
-    //     'start' =>  $dateArraving,
-    //     'end' => $dateLeaving,
-    //     'summary' => 'Booked',
-    //     'mask' => true
-    //     );
-    echo $calander->createCalander();
-
-    }
 
 
 

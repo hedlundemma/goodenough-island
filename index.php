@@ -18,6 +18,7 @@ require __DIR__ . '/calender.php';
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="icon" href="/images/tree.png">
+
     <title>Albero</title>
 </head>
 
@@ -44,7 +45,7 @@ require __DIR__ . '/calender.php';
 
                     How do I get up you there you might think? You just climb. </p>
 
-                <?php addReservations()?>
+                <?php echo $calendar1->draw(date('Y-m-d')); ?>
 
 
 
@@ -54,7 +55,7 @@ require __DIR__ . '/calender.php';
                 <h2> Budget-queen</h2>
                 <img src="/images/treehousebudget.jpeg">
                 <p>Wanna get some comfort and a nice bed to sleep in? Our budget room is for you!</p>
-                <?php addReservations()?>
+                <?php ?>
             </section>
 
             <section class="room-three">
@@ -62,7 +63,7 @@ require __DIR__ . '/calender.php';
                 <img src="/images/treehouselux1.jpeg">
                 <p>You got some cash and you aint afraid to spend it! Our luxury option gives you more space then you
                     probably need. </p>
-                <?php addReservations()?>
+                <?php ?>
             </section>
             <form method="POST" action="/index.php">
                 <h3>Select what room you want:</h2>
@@ -87,6 +88,7 @@ require __DIR__ . '/calender.php';
                     <input type="date" id="dateLeaving" name="dateLeaving" class="form-input" max="2023-01-31"
                         min="2023-01-01">
                     <input type="submit" value="submit">
+                    <br><br><br>
 
 
 
