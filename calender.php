@@ -22,12 +22,11 @@ $calendarArray = [
 foreach ($calendarArray as $key => $calendar) {
     $calendar = $calendar['calendar'];
 
-$calendar->stylesheet();
-$calendar->useMondayStartingDate();
-
+    $calendar->stylesheet();
+    $calendar->useMondayStartingDate();
 }
 
-function bookedDays( array $calendarArray)
+function bookedDays(array $calendarArray)
 {
 
     $database = connect('/hotel.db');
@@ -39,15 +38,15 @@ function bookedDays( array $calendarArray)
     if (!empty($reservations)) {
         $mask = true;
     }
-    foreach ($calendarArray as $calendar){
+    foreach ($calendarArray as $calendar) {
 
-    foreach ($reservations as $event) {
+        foreach ($reservations as $event) {
 
-        if ($event['room_id'] === $calendar['room']) {
-        $calendar['calendar']->addEvent($event['date_arraving'], $event['date_leaving'], false, $mask,  $event['cost']);
+            if ($event['room_id'] === $calendar['room']) {
+                $calendar['calendar']->addEvent($event['date_arraving'], $event['date_leaving'], false, $mask,  $event['cost']);
+            }
         }
     }
-}
 };
 
 bookedDays($calendarArray);
