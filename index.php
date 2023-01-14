@@ -1,12 +1,6 @@
 <?php
-
-
-require __DIR__ . '/connection-db.php';
+require __DIR__ . '/formValidation.php';
 require __DIR__ . '/calender.php';
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,37 +22,28 @@ require __DIR__ . '/calender.php';
             <h1> Tree Hotel</h1>
             <p> Alberos finest place to stay</p>
         </section>
-
     </header>
     <main>
+        <!-- Budget room -->
         <section class="room-section">
             <section class="room-one">
                 <img src="/images/treehousebad.jpeg" alt="cheap tree house, just some planks in a tree">
                 <p class="price">Budget 1€</p>
-
                 <?php echo $cheapskateCalendar->draw(date('Y-m-d')); ?>
-
-
-
             </section>
-
+            <!-- Standard room-->
             <section class="room-two">
                 <p class="price-two">Standard 2€</p>
-
                 <?php echo $budgetCalendar->draw(date('Y-m-d')); ?>
-
                 <img src="/images/treehousebudget.jpeg" alt="budget tree house for the hotel">
-
-
             </section>
-
+            <!-- Luxury room-->
             <section class="room-three">
                 <p class="price">Luxury 3€</p>
-
                 <img src="/images/treehouselux1.jpeg" alt="luxury tree house for the hotel">
-
                 <?php echo $luxuryCalendar->draw(date('Y-m-d')); ?>
             </section>
+            <!-- Form -->
             <form method="POST" class="form" action="/index.php">
                 <h3>Select what room you want:</h2>
                     <select name="rooms" id="rooms" class="form-input">
@@ -66,8 +51,6 @@ require __DIR__ . '/calender.php';
                         <option value="2">Standard</option>
                         <option value="3">Luxury</option>
                         <section class="calander">
-
-
                     </select><br>
                     <label for="fName">First name:</label>
                     <input type="text" id="fName" name="fName" class="form-input">
@@ -83,12 +66,9 @@ require __DIR__ . '/calender.php';
                         min="2023-01-01">
                     <input type="submit" value="submit" class="button">
                     <br><br><br>
-
-
-
             </form>
+            <!-- Getting the receipt -->
             <div class="json-receipt">
-
                 <?php echo validateForm(); ?>
             </div>
         </section>
@@ -98,6 +78,7 @@ require __DIR__ . '/calender.php';
     </footer>
 
 </body>
+
 
 
 
