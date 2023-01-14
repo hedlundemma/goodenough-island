@@ -20,22 +20,3 @@ header {
 h1 {
   font-size: 50px;
 }
-
-nav {
-  width: 100%;
-  gap: 3rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-nav a {
-  text-decoration: none;
-  color: black;
-  font-size: 25px;
-  gap: 3rem;
-  margin-top: -8%;
-}
-
-nav a:hover {
-  color: white;
-}

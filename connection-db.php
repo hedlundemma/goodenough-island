@@ -6,7 +6,7 @@ require __DIR__ . '/hotelFunctions.php';
 require __DIR__ . '/functions.php';
 
 
-function available()
+function validateForm()
 {
 
 
@@ -43,19 +43,20 @@ function available()
                 $totalCost = totalCost($rooms, $dateArraving, $dateLeaving);
 
                 $transferCodeCorrect = transferCode($transferCode, $totalCost);
+                $depositAccepted = checkDeposit($transferCode);
 
-                if ($transferCodeCorrect) {
+                if ($transferCodeCorrect & $depositAccepted) {
                     insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLeaving, $rooms, $totalCost);
 
                     getReservationConfirmation($fname, $lname, $dateArraving, $dateLeaving, $totalCost);
                 } else {
-                    echo "Not enough money";
+                    echo "Sorry, you dont have enough money";
                 }
             } else {
                 echo "invalid transfer code";
             }
         } else {
-            echo "Date not good";
+            echo "This date is already booked";
         }
     }
 };

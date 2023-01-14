@@ -22,8 +22,9 @@ $calendarArray = [
 foreach ($calendarArray as $key => $calendar) {
     $calendar = $calendar['calendar'];
 
-$calendar->stylesheet();
+
 $calendar->useMondayStartingDate();
+$calendar->stylesheet();
 
 }
 

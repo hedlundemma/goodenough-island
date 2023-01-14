@@ -128,5 +128,15 @@
     "departure_date": "2023-01-05",
     "total_cost": 3,
     "stars": "1"
+  },
+  {
+    "island": "Albero",
+    "hotel": "Tree-hotel",
+    "f_name": "dylan",
+    "l_name": "brud",
+    "arrival_date": "2023-01-23",
+    "departure_date": "2023-01-27",
+    "total_cost": 20,
+    "stars": "1"
   }
 ]
