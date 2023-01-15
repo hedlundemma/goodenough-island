@@ -57,7 +57,7 @@ function checkDeposit(string $transferCode)
 
     );
     if ($response->hasHeader('Content-Length')) {
-        $deposit= json_decode($response->getBody()->getContents());
+        $deposit = json_decode($response->getBody()->getContents());
     }
 
     if (isset($deposit->message)) {
@@ -66,8 +66,6 @@ function checkDeposit(string $transferCode)
     } else {
         return false;
     }
-
-
 };
 
 //function to make sure that the dates are free for booking
@@ -153,7 +151,7 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
         'island' => "Albero",
         'hotel' => "Tree-hotel",
         'f_name' => $fname,
-        'l_name' =>$lname,
+        'l_name' => $lname,
         'arrival_date' => $dateArraving,
         'departure_date' => $dateLeaving,
         'total_cost' => $totalCost,
@@ -173,7 +171,3 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
     echo "Thank you for making a reservation at Tree Hotel" . " " . $fname . " "  . $lname .  "." . " " . "Here is your recepit for your future stay at us<br>";
     echo json_encode(end($temporaryArray));
 
-
-
-
-}
