@@ -170,4 +170,4 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
     //get the last recepit
     echo "Thank you for making a reservation at Tree Hotel" . " " . $fname . " "  . $lname .  "." . " " . "Here is your recepit for your future stay at us<br>";
     echo json_encode(end($temporaryArray));
-
+}
