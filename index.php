@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . 'formValidation.php';
-require __DIR__ . 'calender.php';
+require (__DIR__ . '/formValidation.php');
+require (__DIR__ . '/calender.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ require __DIR__ . 'calender.php';
                 <?php echo $luxuryCalendar->draw(date('Y-m-d')); ?>
             </section>
             <!-- Form -->
-            <form method="POST" class="form" action="/index.php">
+            <form method="POST" class="form" action="index.php">
                 <h3>Select what room you want:</h2>
                     <select name="rooms" id="rooms" class="form-input">
                         <option value="1">Budget</option>
