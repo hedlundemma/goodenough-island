@@ -10,7 +10,7 @@ require __DIR__ . '/calender.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/main.css">
-
+    <link rel="stylesheet" type="text/css" href="style/header.css">
     <link rel="icon" href="images/tree.png">
 
     <title>Albero</title>
