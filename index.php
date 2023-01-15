@@ -9,9 +9,9 @@ require __DIR__ . '/calender.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/style/main.css">
-    <link rel="stylesheet" type="text/css" href="/style/header.css">
-    <link rel="icon" href="/images/tree.png">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+
+    <link rel="icon" href="images/tree.png">
 
     <title>Albero</title>
 </head>
@@ -27,7 +27,7 @@ require __DIR__ . '/calender.php';
         <!-- Budget room -->
         <section class="room-section">
             <section class="room-one">
-                <img src="/images/treehousebad.jpeg" alt="cheap tree house, just some planks in a tree">
+                <img src="images/treehousebad.jpeg" alt="cheap tree house, just some planks in a tree">
                 <p class="price">Budget 1€</p>
                 <?php echo $cheapskateCalendar->draw(date('Y-m-d')); ?>
             </section>
@@ -35,12 +35,12 @@ require __DIR__ . '/calender.php';
             <section class="room-two">
                 <p class="price-two">Standard 2€</p>
                 <?php echo $budgetCalendar->draw(date('Y-m-d')); ?>
-                <img src="/images/treehousebudget.jpeg" alt="budget tree house for the hotel">
+                <img src="images/treehousebudget.jpeg" alt="budget tree house for the hotel">
             </section>
             <!-- Luxury room-->
             <section class="room-three">
                 <p class="price">Luxury 3€</p>
-                <img src="/images/treehouselux1.jpeg" alt="luxury tree house for the hotel">
+                <img src="images/treehouselux1.jpeg" alt="luxury tree house for the hotel">
                 <?php echo $luxuryCalendar->draw(date('Y-m-d')); ?>
             </section>
             <!-- Form -->
