@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(208, 248, 208);
+}
+
+.calendar {
+  background-color: rgb(173, 240, 173);
+  color: black;
+}
+
+/* Styling for the form*/
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* button in the submit forms*/
+.button {
+  margin-top: 1rem;
+  width: 6rem;
+  height: 2rem;
+  background-color: black;
+  color: white;
+}
+
+/* images for the three rooms*/
+.room-one img,
+.room-two img,
+.room-three img {
+  width: 50%;
+  height: 30rem;
+}
+
+.room-one,
+.room-two,
+.room-three {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* shows the price for the rooms*/
+.price {
+  position: absolute;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  left: 1%;
+  padding: 0.5rem;
+}
+
+.price-two {
+  position: absolute;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  right: 1%;
+  padding: 0.5rem;
+}
+
+.json-receipt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}

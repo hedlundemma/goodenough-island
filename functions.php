@@ -10,10 +10,10 @@ use GuzzleHttp\Exception\ClientException;
 
 
 // check transfercode
-function transferCode(string $transferCode, int $totalCost)
+function transferCode(string $transferCode, int $totalCost) : bool
 {
     $client = new Client();
-
+// send a request to yrgopelago
     $response = $client->request(
         'POST',
         'https://www.yrgopelago.se/centralbank/transferCode',
@@ -48,7 +48,7 @@ function checkDeposit(string $transferCode)
         'https://www.yrgopelago.se/centralbank/deposit',
         [
             'form_params' => [
-                'user' => 'Dan',
+                'user' => 'Emma',
                 'transferCode' => $transferCode
 
             ]
@@ -60,11 +60,11 @@ function checkDeposit(string $transferCode)
         $deposit = json_decode($response->getBody()->getContents());
     }
 
-    if (isset($deposit->error)) {
+    if (isset($deposit->message)) {
 
-        return false;
-    } else {
         return true;
+    } else {
+        return false;
     }
 };
 
@@ -73,7 +73,7 @@ function checkFreeDate(string $dateArraving, string $dateLeaving, int $rooms)
 {
     //get data from db
     $database = connect('/hotel.db');
-
+ // query to make sure that the date for the room choosen is available
     $statement = $database->prepare('SELECT * FROM reservations
     WHERE
     room_id = :room_id
@@ -94,16 +94,18 @@ function checkFreeDate(string $dateArraving, string $dateLeaving, int $rooms)
 
     $reservations = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    // if the dates are available
     if (empty($reservations) && $dateLeaving > $dateArraving) {
         return true;
     }
 }
 
 // function to calculate the total cost for the tourist stay
-function totalCost(int $rooms, string $dateArraving, string $dateLeaving)
+function totalCost(int $rooms, string $dateArraving, string $dateLeaving) : int|bool
 {
 
     $database = connect('/hotel.db');
+    // sql query
     $stmnt = $database->prepare('SELECT cost FROM rooms WHERE id = :room_id');
     $stmnt->bindParam(':room_id', $rooms, PDO::PARAM_INT);
     $stmnt->execute();
@@ -119,12 +121,13 @@ function totalCost(int $rooms, string $dateArraving, string $dateLeaving)
 
 
 // function to insert the tourist info to the database
-function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLeaving, $rooms, $totalCost)
+function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLeaving, $rooms, $totalCost) : void
 {
 
 
     $database = connect('/hotel.db');
 
+    // sql query that inserts the values from the form to the database
 
     $query = 'INSERT INTO reservations (f_name, l_name, transfer_code, date_arraving, date_leaving, room_id, total_cost) VALUES (:f_name, :l_name, :transfer_code, :date_arraving, :date_leaving, :room_id, :total_cost)';
 
@@ -142,7 +145,7 @@ function insertToDatabase($fname, $lname, $transferCode, $dateArraving, $dateLea
 };
 
 // function to get the reservation confirmation as a json
-function getReservationConfirmation(string $fname, string $lname, string $dateArraving, string $dateLeaving, int $totalCost)
+function getReservationConfirmation(string $fname, string $lname, string $dateArraving, string $dateLeaving, int $totalCost) : void
 {
     $receipt = [
         'island' => "Albero",
@@ -165,5 +168,6 @@ function getReservationConfirmation(string $fname, string $lname, string $dateAr
     file_put_contents(__DIR__ . '/recepit.json', $json);
 
     //get the last recepit
+    echo "Thank you for making a reservation at Tree Hotel" . " " . $fname . " "  . $lname .  "." . " " . "Here is your recepit for your future stay at us<br>";
     echo json_encode(end($temporaryArray));
-}
+
