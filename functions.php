@@ -60,11 +60,11 @@ function checkDeposit(string $transferCode)
         $deposit = json_decode($response->getBody()->getContents());
     }
 
-    if (isset($deposit->message)) {
+    if (isset($deposit->error)) {
 
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 };
 
