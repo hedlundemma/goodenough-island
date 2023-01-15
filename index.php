@@ -74,8 +74,8 @@ require __DIR__ . '/calender.php';
         </section>
 
     </main>
-    <footer>
-    </footer>
+    <script src="script.js"></script>
+
 
 </body>
 
