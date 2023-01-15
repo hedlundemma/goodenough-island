@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/formValidation.php';
-require __DIR__ . '/calender.php';
+require __DIR__ . 'formValidation.php';
+require __DIR__ . 'calender.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
